@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import UserModel from '../models/userModel';
 
 export const getUsers = async (req: Request, res: Response) => {
-  console.log('🚀 ~ getUsers ~ req:', req?.user);
   try {
     const users = await UserModel.find();
     return res.status(200).json(users);
