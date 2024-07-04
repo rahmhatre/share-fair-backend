@@ -9,11 +9,12 @@ export interface IUser extends Document {
   status: string; // Replace with enum if available
   password?: string;
   accessToken?: string;
-  isShopVerified?: boolean;
   mobileNumber?: string;
   address?: string;
   postcode?: string;
   expoPushNotificationToken?: string;
+  createdAt?: string;
+  updatedAt?: string;
   comparePassword(password: string, callback: (error: Error, isMatch: boolean) => void): void;
 }
 
@@ -48,10 +49,6 @@ const userSchema: Schema<IUser> = new Schema(
       required: false,
       type: String,
     },
-    isShopVerified: {
-      required: false,
-      type: Boolean, // Shop user needs to verify this user for the details to be populated
-    },
     mobileNumber: {
       required: false,
       type: String,
@@ -65,6 +62,14 @@ const userSchema: Schema<IUser> = new Schema(
       type: String,
     },
     expoPushNotificationToken: {
+      required: false,
+      type: String,
+    },
+    createdAt: {
+      required: false,
+      type: String,
+    },
+    updatedAt: {
       required: false,
       type: String,
     },
