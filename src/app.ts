@@ -12,6 +12,7 @@ import { authenticateToken } from './middleware/auth';
 // Routes
 import register from './routes/register';
 import users from './routes/users';
+import groups from './routes/groups';
 
 // ENV Variables
 const { DATABASE_URL, PORT } = process.env;
@@ -41,6 +42,7 @@ app.use(morgan('dev')); // Enable Morgan
 // API base URL for all endpoints
 app.use('/api', register);
 app.use('/api', authenticateToken, users);
+app.use('/api', authenticateToken, groups);
 
 // Start Express server
 app.listen(port, () => {

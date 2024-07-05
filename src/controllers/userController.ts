@@ -6,7 +6,7 @@ export const getUsers = async (req: Request, res: Response) => {
     const users = await UserModel.find();
     return res.status(200).json(users);
   } catch (error: any) {
-    return res.status(500).json({ message: error?.message });
+    return res.status(400).json({ message: error?.message });
   }
 };
 
@@ -19,7 +19,7 @@ export const getUser = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'User not found' });
     }
   } catch (error: any) {
-    return res.status(500).json({ message: error?.message });
+    return res.status(400).json({ message: error?.message });
   }
 };
 
@@ -32,7 +32,7 @@ export const updateUser = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'User not found' });
     }
   } catch (error: any) {
-    return res.status(500).json({ message: error?.message });
+    return res.status(400).json({ message: error?.message });
   }
 };
 
@@ -46,6 +46,6 @@ export const deleteUser = async (req: Request, res: Response) => {
     // }
     return res.status(501).send('Delete by ID API');
   } catch (error: any) {
-    return res.status(500).json({ message: error?.message });
+    return res.status(400).json({ message: error?.message });
   }
 };

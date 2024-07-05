@@ -18,12 +18,9 @@ export enum UserStatus {
   INACTIVE = 'INACTIVE',
 }
 
-export enum OrderStatus {
-  PROCESSING = 'PROCESSING',
-  DELIVERED = 'DELIVERED',
+export enum GroupStatus {
   ACTIVE = 'ACTIVE',
-  CANCELLED = 'CANCELLED',
-  TRANSIT = 'TRANSIT',
-  PAYMENTDUE = 'PAYMENTDUE',
-  PROBLEM = 'PROBLEM',
+  INACTIVE = 'INACTIVE',
+  CLOSED = 'CLOSED',
+  ARCHIVED = 'ARCHIVED',
 }

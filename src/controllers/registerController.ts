@@ -12,7 +12,7 @@ export const registerUser = async (req: Request, res: Response) => {
     }
 
     // Find if we have a user with the same email already saved
-    const userExists = await UserModel.findOne({ email: req?.body?.email });
+    const userExists = await UserModel.findOne({ email: email });
     if (userExists) {
       return res.status(409).json({ status: 409, message: 'User already exists.' });
     }

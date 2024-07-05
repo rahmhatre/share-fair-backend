@@ -1,12 +1,13 @@
 import { Document, Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import { AuthMode, UserStatus, UserType } from '../common/Enums';
 
 export interface IUser extends Document {
   name: string;
   email: string;
-  authMode: string; // Replace with enum if available
-  userType: string; // Replace with enum if available
-  status: string; // Replace with enum if available
+  authMode: AuthMode;
+  userType: UserType;
+  status: UserStatus;
   password?: string;
   accessToken?: string;
   mobileNumber?: string;
