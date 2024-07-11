@@ -1,14 +1,16 @@
 import { Request, Response } from 'express';
 import GroupModel from '../models/groupModel';
 import { GroupStatus } from '../common/Enums';
+import { IMember } from '../common/Models';
+import { addMember } from './memberController';
 
 export const createGroup = async (req: Request, res: Response) => {
   try {
     const user = req?.user;
     const { name, description, members } = req.body;
-    // Null check for name, email, and password
-    if (!name || !members) {
-      return res.status(400).json({ status: 400, message: 'Please check the registration credentials supplied.' });
+    // Null check for name
+    if (!name) {
+      return res.status(400).json({ status: 400, message: 'Please check the group name supplied.' });
     }
 
     if (!Array.isArray(members)) {
@@ -21,12 +23,15 @@ export const createGroup = async (req: Request, res: Response) => {
       return res.status(409).json({ status: 409, message: 'Group already exists.' });
     }
 
+    // TODO:  Create Members in Member Table and then add the MemberIds to members in the group table
+    // await addMember()
+
     const newGroup = new GroupModel({
       name,
       description,
       createdByUser: user?.userId,
       status: GroupStatus.ACTIVE,
-      members: [...members, user?.userId],
+      // members: [...members, user?.userId], // TODO: work pending
     });
     await newGroup.save();
     return res.status(201).json({ status: 201, message: 'Group created successfully.' });

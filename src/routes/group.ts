@@ -3,6 +3,6 @@ import { createGroup } from '../controllers/groupController';
 
 const router = Router();
 
-router.post('/groups', createGroup);
+router.post('/group', createGroup);
 
 export default router;
