@@ -13,6 +13,7 @@ export interface IUser extends Document {
   mobileNumber?: string;
   address?: string;
   postcode?: string;
+  profileImage?: string;
   expoPushNotificationToken?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -59,6 +60,10 @@ const userSchema: Schema<IUser> = new Schema(
       type: String,
     },
     postcode: {
+      required: false,
+      type: String,
+    },
+    profileImage: {
       required: false,
       type: String,
     },

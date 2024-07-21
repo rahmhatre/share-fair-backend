@@ -4,7 +4,7 @@ import { Schema, model } from 'mongoose';
 export interface IGroup {
   name: string;
   description: string;
-  members: string[]; // userIds
+  members: string[]; // memberIds
   status: GroupStatus;
   createdByUser: string; // userId
   createdAt?: string;
@@ -21,12 +21,10 @@ const groupSchema: Schema<IGroup> = new Schema(
       required: true,
       type: String,
     },
-    members: [
-      {
-        required: true,
-        type: String,
-      },
-    ],
+    members: {
+      required: true,
+      type: [String],
+    },
     status: {
       required: true,
       type: String,

@@ -5,6 +5,7 @@ export interface IMember {
   email?: string;
   mobileNumber?: string;
   userId?: string;
+  transactionIds?: string[];
   createdAt?: string;
   updatedAt?: string;
 }
@@ -26,6 +27,10 @@ const memberSchema: Schema<IMember> = new Schema(
     userId: {
       required: false,
       type: String,
+    },
+    transactionIds: {
+      required: false,
+      type: [String],
     },
     createdAt: {
       required: false,

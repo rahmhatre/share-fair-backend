@@ -14,6 +14,7 @@ import register from './routes/register';
 import users from './routes/users';
 import group from './routes/group';
 import member from './routes/member';
+import transaction from './routes/transaction';
 
 // ENV Variables
 const { DATABASE_URL, PORT } = process.env;
@@ -45,6 +46,7 @@ app.use('/api', register);
 app.use('/api', authenticateToken, users);
 app.use('/api', authenticateToken, group);
 app.use('/api', authenticateToken, member);
+app.use('/api', authenticateToken, transaction);
 
 // Start Express server
 app.listen(port, () => {

@@ -3,7 +3,7 @@ import MemberModel from '../models/memberModel';
 
 export const createMember = async (req: Request, res: Response) => {
   try {
-    const user = req?.user;
+    const loggedInUser = req?.user;
     const { name, email, mobileNumber } = req.body;
 
     // Null check for name
@@ -29,6 +29,9 @@ export const createMember = async (req: Request, res: Response) => {
 };
 
 export const addMember = async (name: string, email?: string, mobileNumber?: string) => {
+  if (!email || !mobileNumber) {
+    throw new Error('Either email or mobile number must be supplied.');
+  }
   const newMember = new MemberModel({
     name,
     email,
